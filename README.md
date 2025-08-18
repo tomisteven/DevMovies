@@ -97,22 +97,6 @@ npm install
 npm run dev
 ```
 
-### Estructura de Archivos
-```plaintext
-src/
-├── assets/ # Recursos estáticos (imágenes, iconos)
-├── components/ # Componentes reutilizables
-│   ├── atoms/ # Componentes UI básicos (botones, inputs)
-│   ├── molecules/ # Componentes compuestos (tarjetas, listas)
-│   ├── organisms/ # Componentes complejos (barras de navegación, formularios)
-│   └── templates/ # Plantillas de páginas (layout principal)
-├── context/ # Gestión de estado global (Redux)
-├── hooks/ # Custom hooks (lógica reutilizable)
-├── pages/ # Componentes de páginas (inicio, búsqueda, detalles)
-├── styles/ # Estilos globales (CSS, SASS)
-├── utils/ # Funciones utilitarias (formateo, validación)
-└── App.js # Componente raíz
-```
 
 ## Gestión de Estado con Redux
 ### Configuración de Redux Toolkit
