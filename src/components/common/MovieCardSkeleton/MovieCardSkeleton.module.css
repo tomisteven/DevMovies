@@ -1,0 +1,63 @@
+.skeletonCard {
+  background-color: var(--background-secondary);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  height: 100%;
+}
+
+.skeletonImage {
+  width: 100%;
+  aspect-ratio: 2/3;
+  background-color: var(--background-tertiary);
+  animation: pulse 1.5s infinite;
+}
+
+.skeletonContent {
+  padding: 1.25rem;
+}
+
+.skeletonTitle {
+  height: 1.25rem;
+  width: 80%;
+  background-color: var(--background-tertiary);
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  animation: pulse 1.5s infinite;
+  animation-delay: 0.2s;
+}
+
+.skeletonRating {
+  height: 1rem;
+  width: 60%;
+  background-color: var(--background-tertiary);
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  animation: pulse 1.5s infinite;
+  animation-delay: 0.3s;
+}
+
+.skeletonMeta {
+  height: 0.9rem;
+  width: 40%;
+  background-color: var(--background-tertiary);
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  animation: pulse 1.5s infinite;
+  animation-delay: 0.4s;
+}
+
+.skeletonButton {
+  height: 2.5rem;
+  width: 100%;
+  background-color: var(--background-tertiary);
+  border-radius: 6px;
+  animation: pulse 1.5s infinite;
+  animation-delay: 0.5s;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 0.3; }
+  100% { opacity: 0.6; }
+}
