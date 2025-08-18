@@ -1,0 +1,47 @@
+.header {
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  margin: 0;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.year {
+  color: var(--text-secondary);
+  font-weight: normal;
+}
+
+.meta {
+  display: flex;
+  gap: 1rem;
+  margin: 0.5rem 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: rgb(97, 148, 231);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  color: white;
+}
+
+.crew {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.crew div {
+  margin-bottom: 0.25rem;
+}
+
+.crew strong {
+  color: var(--text-primary);
+}
