@@ -1,0 +1,42 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  transition: background-color 0.2s;
+}
+
+.main {
+  flex: 1;
+  padding: 2rem 0;
+  width: 95%;
+  margin: auto;
+}
+
+.contentContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.layout * {
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 1.5rem 0;
+  }
+
+  .contentContainer {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 1rem 0;
+  }
+}
