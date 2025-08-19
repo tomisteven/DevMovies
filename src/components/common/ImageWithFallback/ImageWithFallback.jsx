@@ -1,29 +1,27 @@
-//imagenes rotas o que no estan disponibles
-import React, { useState } from 'react';
-import styles from './ImageWithFallback.module.css';
 
-const ImageWithFallback = ({ src, fallbackSrc, className = '', ...props }) => {
-  const [imgSrc, setImgSrc] = useState(src);
+import React, { useState } from "react";
+import styles from "./ImageWithFallback.module.css";
+
+const ImageWithFallback = ({ src, fallbackSrc, alt, className }) => {
   const [loading, setLoading] = useState(true);
+  const [imgSrc, setImgSrc] = useState(src);
 
+  const handleLoad = () => setLoading(false);
   const handleError = () => {
     setImgSrc(fallbackSrc);
     setLoading(false);
   };
 
-  const handleLoad = () => {
-    setLoading(false);
-  };
-
   return (
-    <div className={`${styles.container} ${className}`}>
-      {loading && <div className={styles.loading}></div>}
+    <div className={styles.imageWrapper}>
+      {loading && <div className={styles.loader}></div>}
+
       <img
         src={imgSrc}
-        onError={handleError}
+        alt={alt}
+        className={`${className} ${loading ? styles.hidden : ""}`}
         onLoad={handleLoad}
-        className={`${styles.image} ${loading ? styles.hidden : ''}`}
-        {...props}
+        onError={handleError}
       />
     </div>
   );
