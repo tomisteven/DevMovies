@@ -6,16 +6,16 @@ import search from "../../../assets/search.png";
 import { useMoviesFilter } from "../../../hooks/useMoviesFilter";
 
 const MoviesGrid = ({ movies, loading }) => {
-const options = [
-  "Date",
-  "Popularity",
-  "Qualification",
-  "Name",
-  "Relevance",
-  "Movie",
-  "Series",
-  "Game"
-];
+  const options = [
+    "Date",
+    "Popularity",
+    "Qualification",
+    "Name",
+    "Relevance",
+    "Movie",
+    "Series",
+    "Game",
+  ];
 
   const { filter, setFilter, filteredMovies } = useMoviesFilter(movies);
 
@@ -50,20 +50,18 @@ const options = [
     <section className={styles.gridContainer}>
       <h5>Filter: </h5>
       <div className={styles.filters}>
-        {options.map(
-          (filtro) => (
-            <button
-              key={filtro}
-              className={`${styles.btnFilterMovies} ${
-                filter === filtro ? styles.activeFilter : ""
-              }`}
-              onClick={() => setFilter(filtro)}
-            >
-              {filtro.charAt(0).toUpperCase() + filtro.slice(1)}{" "}
-              {/* para renderizar los nombres */}
-            </button>
-          )
-        )}
+        {options.map((filtro) => (
+          <button
+            key={filtro}
+            className={`${styles.btnFilterMovies} ${
+              filter === filtro ? styles.activeFilter : ""
+            }`}
+            onClick={() => setFilter(filtro)}
+          >
+            {filtro.charAt(0).toUpperCase() + filtro.slice(1)}{" "}
+            {/* para renderizar los nombres */}
+          </button>
+        ))}
       </div>
 
       <div className={styles.grid}>
