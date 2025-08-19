@@ -1,34 +1,28 @@
-import React, { useState, useMemo } from "react";
+import React from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import MovieCardSkeleton from "../../common/MovieCardSkeleton/MovieCardSkeletor";
 import styles from "./MovieGrid.module.css";
 import search from "../../../assets/search.png";
+import { useMoviesFilter } from "../../../hooks/useMoviesFilter";
 
 const MoviesGrid = ({ movies, loading }) => {
-  const [filter, setFilter] = useState("fecha");
+const options = [
+  "Date",
+  "Popularity",
+  "Qualification",
+  "Name",
+  "Relevance",
+  "Movie",
+  "Series",
+  "Game"
+];
 
-  const filteredMovies = useMemo(() => {
-    if (!movies) return [];
-
-    const sorted = [...movies];
-    switch (filter) {
-      case "fecha":
-        return sorted.sort((a, b) => new Date(b.Year) - new Date(a.Year));
-      case "popularidad":
-        return sorted.sort((a, b) => (b.popularity || 0) - (a.popularity || 0));
-      case "calificacion":
-        return sorted.sort((a, b) => (b.rating || 0) - (a.rating || 0));
-      case "nombre":
-        return sorted.sort((a, b) => a.Title.localeCompare(b.Title));
-      case "relevancia":
-      default:
-        return sorted;
-    }
-  }, [filter, movies]);
+  const { filter, setFilter, filteredMovies } = useMoviesFilter(movies);
 
   if (loading) {
     return (
       <div className={styles.grid}>
+        {/* skeletons mientras se cargan las películas, MINIMO 8 */}
         {Array.from({ length: 8 }).map((_, index) => (
           <MovieCardSkeleton key={index} />
         ))}
@@ -56,46 +50,20 @@ const MoviesGrid = ({ movies, loading }) => {
     <section className={styles.gridContainer}>
       <h5>Filter: </h5>
       <div className={styles.filters}>
-        <button
-          className={`${styles.btnFilterMovies} ${
-            filter === "fecha" ? styles.activeFilter : ""
-          }`}
-          onClick={() => setFilter("fecha")}
-        >
-          Fecha
-        </button>
-        <button
-          className={`${styles.btnFilterMovies} ${
-            filter === "popularidad" ? styles.activeFilter : ""
-          }`}
-          onClick={() => setFilter("popularidad")}
-        >
-          Popularidad
-        </button>
-        <button
-          className={`${styles.btnFilterMovies} ${
-            filter === "calificacion" ? styles.activeFilter : ""
-          }`}
-          onClick={() => setFilter("calificacion")}
-        >
-          Calificación
-        </button>
-        <button
-          className={`${styles.btnFilterMovies} ${
-            filter === "relevancia" ? styles.activeFilter : ""
-          }`}
-          onClick={() => setFilter("relevancia")}
-        >
-          Relevancia
-        </button>
-        <button
-          className={`${styles.btnFilterMovies} ${
-            filter === "nombre" ? styles.activeFilter : ""
-          }`}
-          onClick={() => setFilter("nombre")}
-        >
-          Nombre
-        </button>
+        {options.map(
+          (filtro) => (
+            <button
+              key={filtro}
+              className={`${styles.btnFilterMovies} ${
+                filter === filtro ? styles.activeFilter : ""
+              }`}
+              onClick={() => setFilter(filtro)}
+            >
+              {filtro.charAt(0).toUpperCase() + filtro.slice(1)}{" "}
+              {/* para renderizar los nombres */}
+            </button>
+          )
+        )}
       </div>
 
       <div className={styles.grid}>

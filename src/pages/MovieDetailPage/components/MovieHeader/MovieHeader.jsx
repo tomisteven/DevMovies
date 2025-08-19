@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./MovieHeader.module.css";
 
 const MovieHeader = ({ movie }) => {
-  const { Title, Year, Rated, Runtime, Genre, Director, Actors, ImbRating } =
+  const { Title, Year, Rated, Runtime, Genre, Director, Actors } =
     movie;
 
   return (

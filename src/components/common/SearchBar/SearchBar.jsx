@@ -20,14 +20,21 @@ const SearchBar = ({ onSearch, initialSearchTerm = "", isLoading = false }) => {
     onSearch({ searchTerm, year, type });
   };
 
+  const clearSeaarch = () => {
+    setSearchTerm("");
+    setYear("");
+    setType("");
+    setError("");
+  };
+
   return (
     <form onSubmit={handleSubmit} className={styles.searchForm} noValidate>
       <div className={styles.searchInputContainer}>
         <Input
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Buscar películas..."
-          aria-label="Buscar películas"
+          placeholder="Search..."
+          aria-label="Search movies"
           error={error}
         />
         {error && <span className={styles.errorMessage}>{error}</span>}
@@ -38,7 +45,7 @@ const SearchBar = ({ onSearch, initialSearchTerm = "", isLoading = false }) => {
           type="number"
           value={year}
           onChange={(e) => setYear(e.target.value)}
-          placeholder="Año"
+          placeholder="Year"
           min="1900"
           max={new Date().getFullYear()}
           className={styles.yearInput}
@@ -48,10 +55,10 @@ const SearchBar = ({ onSearch, initialSearchTerm = "", isLoading = false }) => {
           value={type}
           onChange={(e) => setType(e.target.value)}
           options={[
-            { value: "", label: "Todos" },
-            { value: "movie", label: "Películas" },
+            { value: "", label: "All" },
+            { value: "movie", label: "Movies" },
             { value: "series", label: "Series" },
-            { value: "episode", label: "Episodios" },
+            { value: "episode", label: "Episodes" },
           ]}
         />
       </div>
@@ -63,6 +70,13 @@ const SearchBar = ({ onSearch, initialSearchTerm = "", isLoading = false }) => {
       >
         {isLoading ? "Searching..." : "Search"}
       </Button>
+      <button
+        type="button"
+        onClick={clearSeaarch}
+        className={styles.clearButton}
+      >
+        Clear Search
+      </button>
     </form>
   );
 };

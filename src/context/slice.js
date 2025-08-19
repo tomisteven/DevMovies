@@ -4,18 +4,21 @@ import axios from "axios";
 //api key
 const API_KEY = "7769c6c7";
 
-
-
 export const fetchMovies = createAsyncThunk(
-  'movies/fetchMovies',
-  async ({ searchTerm, page = 1, year = '', type = '' }, { rejectWithValue }) => {
+  "movies/fetchMovies",
+  async (
+    { searchTerm, page = 1, year = "", type = "" },
+    { rejectWithValue }
+  ) => {
     try {
       const response = await axios.get(
-        `https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}&page=${page}${year ? `&y=${year}` : ''}${type ? `&type=${type}` : ''}`
+        `https://www.omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}&page=${page}${
+          year ? `&y=${year}` : ""
+        }${type ? `&type=${type}` : ""}`
       );
 
-      if (response.data.Response === 'False') {
-        throw new Error(response.data.Error || 'No se encontraron resultados');
+      if (response.data.Response === "False") {
+        throw new Error(response.data.Error || "No se encontraron resultados");
       }
 
       return {
@@ -24,14 +27,13 @@ export const fetchMovies = createAsyncThunk(
         searchTerm,
         page: parseInt(page),
         year,
-        type
+        type,
       };
     } catch (error) {
       return rejectWithValue(error.message);
     }
   }
 );
-
 
 export const fetchMovieDetails = createAsyncThunk(
   "movies/fetchMovieDetails",
@@ -101,6 +103,7 @@ const movieSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
+
       .addCase(fetchMovieDetails.fulfilled, (state, action) => {
         state.loading = false;
         state.currentMovie = action.payload;
@@ -113,4 +116,5 @@ const movieSlice = createSlice({
 });
 
 export const { clearMovies, setSearchParams } = movieSlice.actions;
+
 export default movieSlice.reducer;
