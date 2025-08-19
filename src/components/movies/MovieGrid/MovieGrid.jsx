@@ -1,5 +1,5 @@
 import React from "react";
-import MovieCard from "../MovieCard/MovieCard";
+import MovieCard from "../MoviesCard/MovieCard";
 import MovieCardSkeleton from "../../common/MovieCardSkeleton/MovieCardSkeletor";
 import styles from "./MovieGrid.module.css";
 import search from "../../../assets/search.png";
